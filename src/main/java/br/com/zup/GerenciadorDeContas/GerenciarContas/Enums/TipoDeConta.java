@@ -1,4 +1,4 @@
-package br.com.zup.GerenciadorDeContas.Enums;
+package br.com.zup.GerenciadorDeContas.GerenciarContas.Enums;
 
 public enum TipoDeConta {
     LUZ,
