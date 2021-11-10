@@ -8,7 +8,7 @@ public enum TipoDeConta {
 
     private String tipoDeConta;
 
-    TipoDeConta(String conta){
+    TipoDeConta(String conta) {
         tipoDeConta = conta;
     }
 
@@ -16,7 +16,7 @@ public enum TipoDeConta {
 
     }
 
-    public String getTipoDeConta(){
+    public String getTipoDeConta() {
         return tipoDeConta;
 
     }

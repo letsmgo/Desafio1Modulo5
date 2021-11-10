@@ -7,7 +7,7 @@ public enum StatusDaConta {
 
     private String statusDaConta;
 
-    StatusDaConta(String statusConta){
+    StatusDaConta(String statusConta) {
         statusDaConta = statusConta;
     }
 
@@ -15,7 +15,7 @@ public enum StatusDaConta {
 
     }
 
-    public String getStatusDaConta(){
+    public String getStatusDaConta() {
 
         return statusDaConta;
 
