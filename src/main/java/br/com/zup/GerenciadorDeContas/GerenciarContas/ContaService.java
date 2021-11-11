@@ -21,10 +21,16 @@ public class ContaService {
         conta.setNome(contaDTO.getNome());
         conta.setValor(contaDTO.getValor());
         conta.setDataDeVencimento(contaDTO.getDataDeVencimento());
-
+        atualizarStatus(conta);
 
         return contaRepository.save(conta);
     }
 
+    private void atualizarStatus (Conta conta){
 
+        if (conta.getDataDeVencimento().isBefore(LocalDate.now())) {
+            conta.setStatusDaConta(StatusDaConta.VENCIDA);
+        }
+
+    }
 }
