@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class ContaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Conta incluirConta(@RequestBody ContaDTO contaDTO) {
+    public Conta incluirConta(@RequestBody @Valid ContaDTO contaDTO) {
 
         return contaService.incluirConta(contaDTO);
     }
@@ -44,8 +45,9 @@ public class ContaController {
     }
 
     @PutMapping("/{id}")
-    public SaidaPgtoAtualizadoDTO atualizarPgto(@PathVariable int id, @RequestBody PagamentoAtualizarDTO contaAtualizada) {
-        return modelMapper.map(contaService.atualizarPgtoConta(id), SaidaPgtoAtualizadoDTO.class);
+    public SaidaPgtoAtualizadoDTO atualizarPgto(@PathVariable int id, @RequestBody PagamentoAtualizarDTO
+            contaAtualizada) {
+        return modelMapper.map(contaService.atualizarPgtoConta(id,contaAtualizada), SaidaPgtoAtualizadoDTO.class);
     }
 
 }
