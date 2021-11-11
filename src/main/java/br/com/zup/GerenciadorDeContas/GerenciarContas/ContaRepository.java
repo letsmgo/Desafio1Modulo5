@@ -8,4 +8,5 @@ public interface ContaRepository extends CrudRepository<Conta, String> {
     List<Conta> findAllById(int id);
     List<Conta> findAllByNome(String nome);
     List<Conta> findAllByValor(double valor);
+
 }
