@@ -19,21 +19,21 @@ public class Conta {
     private double valor;
     private LocalDate dataDeVencimento;
     private LocalDateTime dataDePagamento;
-    private StatusDaConta satusDaConta;
+    private StatusDaConta statusDaConta = StatusDaConta.AGUARDANDO;
 
     public Conta() {
 
     }
 
     public Conta(int id, TipoDeConta tipoDeConta, String nome, double valor, LocalDate dataDeVencimento,
-                 LocalDateTime dataDePagamento, StatusDaConta satusDaConta) {
+                 LocalDateTime dataDePagamento, StatusDaConta statusDaConta) {
         this.id = id;
         this.tipoDeConta = tipoDeConta;
         this.nome = nome;
         this.valor = valor;
         this.dataDeVencimento = dataDeVencimento;
         this.dataDePagamento = dataDePagamento;
-        this.satusDaConta = satusDaConta;
+        this.statusDaConta = statusDaConta;
     }
 
     public int getId() {
@@ -80,11 +80,11 @@ public class Conta {
         this.dataDePagamento = dataDePagamento;
     }
 
-    public StatusDaConta getSatusDaConta() {
-        return satusDaConta;
+    public StatusDaConta getStatusDaConta() {
+        return statusDaConta;
     }
 
-    public void setSatusDaConta(StatusDaConta satusDaConta) {
-        this.satusDaConta = satusDaConta;
+    public void setStatusDaConta(StatusDaConta statusDaConta) {
+        this.statusDaConta = statusDaConta;
     }
 }

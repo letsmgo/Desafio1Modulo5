@@ -13,7 +13,12 @@ public class ContaController {
     @Autowired
     private ContaService contaService;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Conta incluirConta(@RequestBody ContaDTO contaDTO){
 
+        return contaService.incluirConta(contaDTO);
+    }
 
 
 }
