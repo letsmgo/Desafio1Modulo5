@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class ContaService {
@@ -32,5 +33,18 @@ public class ContaService {
             conta.setStatusDaConta(StatusDaConta.VENCIDA);
         }
 
+    }
+
+    public List<Conta> exibirContasCadastradas(Integer id, String nome, Double valor){
+        if (id != null){
+            return contaRepository.findAllById(id);
+        } else if (nome != null){
+            return contaRepository.findAllByNome(nome);
+        } else if (valor != null){
+            return contaRepository.findAllByValor(valor);
+        }
+        List<Conta> contas = (List<Conta>) contaRepository.findAll();
+
+        return contas;
     }
 }
