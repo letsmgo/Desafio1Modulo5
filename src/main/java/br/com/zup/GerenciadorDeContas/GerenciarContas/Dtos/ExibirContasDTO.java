@@ -42,4 +42,5 @@ public class ExibirContasDTO {
     public void setStatusDaConta(StatusDaConta statusDaConta) {
         this.statusDaConta = statusDaConta;
     }
+
 }

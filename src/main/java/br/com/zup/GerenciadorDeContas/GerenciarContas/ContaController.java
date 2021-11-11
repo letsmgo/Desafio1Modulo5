@@ -44,10 +44,8 @@ public class ContaController {
     }
 
     @PutMapping("/{id}")
-    public SaidaPgtoAtualizadoDTO atualizarPgto (@PathVariable int id, @RequestBody PagamentoAtualizarDTO contaAtualizada)
-    {
+    public SaidaPgtoAtualizadoDTO atualizarPgto(@PathVariable int id, @RequestBody PagamentoAtualizarDTO contaAtualizada) {
         return modelMapper.map(contaService.atualizarPgtoConta(id), SaidaPgtoAtualizadoDTO.class);
     }
-
 
 }

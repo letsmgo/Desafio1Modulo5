@@ -20,4 +20,5 @@ public class PagamentoAtualizarDTO {
     public void setStatusDaConta(StatusDaConta statusDaConta) {
         this.statusDaConta = statusDaConta;
     }
+
 }

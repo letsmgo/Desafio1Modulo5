@@ -11,5 +11,4 @@ public interface ContaRepository extends CrudRepository<Conta, Integer> {
 
     List<Conta> findAllByValor(double valor);
 
-
 }

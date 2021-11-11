@@ -86,4 +86,5 @@ public class SaidaPgtoAtualizadoDTO {
     public void setStatusDaConta(StatusDaConta statusDaConta) {
         this.statusDaConta = statusDaConta;
     }
+
 }

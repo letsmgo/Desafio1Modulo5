@@ -51,15 +51,15 @@ public class ContaService {
         return contas;
     }
 
-    public Conta localizarPorId (int id){
+    public Conta localizarPorId(int id) {
         Optional<Conta> contaEncontrada = contaRepository.findById(id);
-        if (contaEncontrada.isEmpty()){
+        if (contaEncontrada.isEmpty()) {
             throw new IdNaoEncontradoException("Conta não encontrada!");
         }
         return contaEncontrada.get();
     }
 
-    public Conta atualizarPgtoConta (int id){
+    public Conta atualizarPgtoConta(int id) {
         Conta contaParaAtualizarPgto = localizarPorId(id);
         contaParaAtualizarPgto.setDataDePagamento(LocalDateTime.now());
         contaParaAtualizarPgto.setStatusDaConta(StatusDaConta.PAGO);
