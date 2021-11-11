@@ -3,6 +3,8 @@ package br.com.zup.GerenciadorDeContas.GerenciarContas;
 
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ContaDTO;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ExibirContasDTO;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.PagamentoAtualizarDTO;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.SaidaPgtoAtualizadoDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,5 +42,12 @@ public class ContaController {
         }
         return contaDtos;
     }
+
+    @PutMapping("/{id}")
+    public SaidaPgtoAtualizadoDTO atualizarPgto (@PathVariable int id, @RequestBody PagamentoAtualizarDTO contaAtualizada)
+    {
+        return modelMapper.map(contaService.atualizarPgtoConta(id), SaidaPgtoAtualizadoDTO.class);
+    }
+
 
 }

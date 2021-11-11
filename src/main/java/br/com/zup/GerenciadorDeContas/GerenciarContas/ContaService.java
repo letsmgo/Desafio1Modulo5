@@ -1,13 +1,11 @@
 package br.com.zup.GerenciadorDeContas.GerenciarContas;
 
+import br.com.zup.GerenciadorDeContas.Exceptions.IdNaoEncontradoException;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ContaDTO;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDate;
 import java.util.List;
@@ -53,6 +51,16 @@ public class ContaService {
         return contas;
     }
 
+    public Conta localizarPorId (int id){
+        Optional<Conta> contaEncontrada = contaRepository.findById(id);
+        if (contaEncontrada.isEmpty()){
+            throw new IdNaoEncontradoException("Conta não encontrada!");
+        }
+        return contaEncontrada.get();
+    }
+
+
 }
+
 
 
