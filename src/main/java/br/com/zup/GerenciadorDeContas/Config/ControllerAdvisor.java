@@ -16,4 +16,10 @@ public class ControllerAdvisor {
         return exception.getMessage();
     }
 
+    @ExceptionHandler(StatusNaoConfereException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public String retornoStatusDiferente (StatusNaoConfereException exception){
+        return exception.getMessage();
+    }
+
 }
