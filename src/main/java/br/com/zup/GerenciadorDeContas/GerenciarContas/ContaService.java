@@ -59,6 +59,14 @@ public class ContaService {
         return contaEncontrada.get();
     }
 
+    public Conta atualizarPgtoConta (int id){
+        Conta contaParaAtualizarPgto = localizarPorId(id);
+        contaParaAtualizarPgto.setDataDePagamento(LocalDateTime.now());
+        contaParaAtualizarPgto.setStatusDaConta(StatusDaConta.PAGO);
+        contaRepository.save(contaParaAtualizarPgto);
+
+        return contaParaAtualizarPgto;
+    }
 
 }
 
