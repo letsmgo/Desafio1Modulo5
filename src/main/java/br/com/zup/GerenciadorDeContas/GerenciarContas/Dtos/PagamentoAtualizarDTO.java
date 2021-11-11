@@ -2,7 +2,11 @@ package br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos;
 
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 
+import javax.validation.constraints.NotNull;
+
 public class PagamentoAtualizarDTO {
+
+    @NotNull
     private StatusDaConta statusDaConta;
 
     public PagamentoAtualizarDTO() {
