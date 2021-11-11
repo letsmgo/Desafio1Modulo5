@@ -87,4 +87,5 @@ public class Conta {
     public void setStatusDaConta(StatusDaConta statusDaConta) {
         this.statusDaConta = statusDaConta;
     }
+
 }

@@ -3,10 +3,15 @@ package br.com.zup.GerenciadorDeContas.GerenciarContas;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ContaDTO;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContaService {
@@ -27,24 +32,27 @@ public class ContaService {
         return contaRepository.save(conta);
     }
 
-    private void atualizarStatus (Conta conta){
+    private void atualizarStatus(Conta conta) {
 
-        if (conta.getDataDeVencimento().isBefore(LocalDate.now())) {
+        if (conta.getDataDeVencimento().isBefore(ChronoLocalDate.from(LocalDateTime.now()))) {
             conta.setStatusDaConta(StatusDaConta.VENCIDA);
         }
 
     }
 
-    public List<Conta> exibirContasCadastradas(Integer id, String nome, Double valor){
-        if (id != null){
+    public List<Conta> exibirContasCadastradas(Integer id, String nome, Double valor) {
+        if (id != null) {
             return contaRepository.findAllById(id);
-        } else if (nome != null){
+        } else if (nome != null) {
             return contaRepository.findAllByNome(nome);
-        } else if (valor != null){
+        } else if (valor != null) {
             return contaRepository.findAllByValor(valor);
         }
         List<Conta> contas = (List<Conta>) contaRepository.findAll();
 
         return contas;
     }
+
 }
+
+
