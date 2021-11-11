@@ -1,7 +1,9 @@
 package br.com.zup.GerenciadorDeContas.GerenciarContas;
 
 import br.com.zup.GerenciadorDeContas.Exceptions.IdNaoEncontradoException;
+import br.com.zup.GerenciadorDeContas.Exceptions.StatusNaoConfereException;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ContaDTO;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.PagamentoAtualizarDTO;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,13 +61,21 @@ public class ContaService {
         return contaEncontrada.get();
     }
 
-    public Conta atualizarPgtoConta(int id) {
+    public Conta atualizarPgtoConta(int id, PagamentoAtualizarDTO pagamentoAtualizarDTO) {
+        verificarStatusPgto(pagamentoAtualizarDTO);
         Conta contaParaAtualizarPgto = localizarPorId(id);
         contaParaAtualizarPgto.setDataDePagamento(LocalDateTime.now());
         contaParaAtualizarPgto.setStatusDaConta(StatusDaConta.PAGO);
         contaRepository.save(contaParaAtualizarPgto);
 
         return contaParaAtualizarPgto;
+    }
+
+    private void verificarStatusPgto (PagamentoAtualizarDTO pagamentoAtualizarDTO){
+
+        if (StatusDaConta.PAGO != pagamentoAtualizarDTO.getStatusDaConta()){
+            throw new StatusNaoConfereException("Status não compatível!");
+        }
     }
 
 }
