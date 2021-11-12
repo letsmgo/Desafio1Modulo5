@@ -32,11 +32,9 @@ public class ContaController {
     }
 
     @GetMapping
-    public List<ExibirContasDTO> exibirContas(@RequestParam(required = false) Integer id,
-                                              @RequestParam(required = false) String nome,
-                                              @RequestParam(required = false) Double valor) {
+    public List<ExibirContasDTO> exibirContas() {
         List<ExibirContasDTO> contaDtos = new ArrayList<>();
-        for (Conta conta : contaService.exibirContasCadastradas(id, nome, valor)) {
+        for (Conta conta : contaService.exibirContasCadastradas()) {
             ExibirContasDTO exibirContaDto = modelMapper.map(conta, ExibirContasDTO.class);
 
             contaDtos.add(exibirContaDto);
