@@ -36,6 +36,8 @@ public class ContaService {
 
         if (conta.getDataDeVencimento().isBefore(ChronoLocalDate.from(LocalDateTime.now()))) {
             conta.setStatusDaConta(StatusDaConta.VENCIDA);
+        } else {
+            conta.setStatusDaConta(StatusDaConta.AGUARDANDO);
         }
 
     }
