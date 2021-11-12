@@ -3,10 +3,10 @@ package br.com.zup.GerenciadorDeContas.GerenciarContas;
 import br.com.zup.GerenciadorDeContas.Exceptions.IdNaoEncontradoException;
 import br.com.zup.GerenciadorDeContas.Exceptions.StatusNaoConfereException;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ContaDTO;
-import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ExibirContasDTO;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.PagamentoAtualizarDTO;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.TipoDeConta;
+import br.com.zup.GerenciadorDeContas.Repository.ContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

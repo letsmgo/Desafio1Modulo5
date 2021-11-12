@@ -1,6 +1,7 @@
-package br.com.zup.GerenciadorDeContas.GerenciarContas;
+package br.com.zup.GerenciadorDeContas.Repository;
 
 
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Conta;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.TipoDeConta;
 import org.springframework.data.jpa.repository.Query;

@@ -1,6 +1,8 @@
-package br.com.zup.GerenciadorDeContas.GerenciarContas;
+package br.com.zup.GerenciadorDeContas.GerenciarContas.Controller;
 
 
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Conta;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.ContaService;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.*;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.TipoDeConta;
