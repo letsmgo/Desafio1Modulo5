@@ -42,17 +42,10 @@ public class ContaService {
 
     }
 
-    public List<Conta> exibirContasCadastradas(Integer id, String nome, Double valor) {
-        if (id != null) {
-            return contaRepository.findAllById(id);
-        } else if (nome != null) {
-            return contaRepository.findAllByNome(nome);
-        } else if (valor != null) {
-            return contaRepository.findAllByValor(valor);
-        }
-        List<Conta> contas = (List<Conta>) contaRepository.findAll();
+    public List<Conta> exibirContasCadastradas() {
+        Iterable<Conta> contas = contaRepository.findAll();
 
-        return contas;
+        return (List<Conta>) contas;
     }
 
     public Conta localizarPorId(int id) {
@@ -79,6 +72,8 @@ public class ContaService {
             throw new StatusNaoConfereException("Status não compatível!");
         }
     }
+
+
 
 }
 
