@@ -73,4 +73,5 @@ public class ContaSaidaGeralDTO {
     public void setStatusDaConta(StatusDaConta statusDaConta) {
         this.statusDaConta = statusDaConta;
     }
+
 }

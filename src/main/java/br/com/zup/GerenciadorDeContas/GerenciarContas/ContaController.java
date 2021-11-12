@@ -1,10 +1,7 @@
 package br.com.zup.GerenciadorDeContas.GerenciarContas;
 
 
-import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ContaDTO;
-import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ExibirContasDTO;
-import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.PagamentoAtualizarDTO;
-import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.SaidaPgtoAtualizadoDTO;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,6 +43,13 @@ public class ContaController {
     public SaidaPgtoAtualizadoDTO atualizarPgto(@PathVariable int id, @RequestBody PagamentoAtualizarDTO
             contaAtualizada) {
         return modelMapper.map(contaService.atualizarPgtoConta(id,contaAtualizada), SaidaPgtoAtualizadoDTO.class);
+    }
+
+    @GetMapping("/{id}")
+    public ContaSaidaGeralDTO buscaPorIdEspecifico(@PathVariable int id){
+        Conta conta = contaService.localizarPorId(id);
+
+        return modelMapper.map(conta, ContaSaidaGeralDTO.class);
     }
 
 }
