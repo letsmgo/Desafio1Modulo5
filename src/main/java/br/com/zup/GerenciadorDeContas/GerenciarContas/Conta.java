@@ -2,13 +2,10 @@ package br.com.zup.GerenciadorDeContas.GerenciarContas;
 
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.TipoDeConta;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -18,17 +15,23 @@ public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull(message = "Necessário informar um tipo de conta válido.")
+
+    @NotNull
     private TipoDeConta tipoDeConta;
+
     @Column(nullable = false)
-    @NotEmpty(message = "Não é possível cadastrar uma conta sem nome!")
-    @Size(min = 2, max = 50, message = "Nome de conta superior ao tamanho suportado (entre 2 e 50 caracteres).")
     private String nome;
-    @DecimalMin(value = "0.1")
+
+    @Column(nullable = false)
     private double valor;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
+    @Column(nullable = false)
     private LocalDate dataDeVencimento;
+
+    @Column(nullable = true)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataDePagamento;
+
     private StatusDaConta statusDaConta = StatusDaConta.AGUARDANDO;
 
     public Conta() {
