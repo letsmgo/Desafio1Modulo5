@@ -3,8 +3,10 @@ package br.com.zup.GerenciadorDeContas.GerenciarContas;
 import br.com.zup.GerenciadorDeContas.Exceptions.IdNaoEncontradoException;
 import br.com.zup.GerenciadorDeContas.Exceptions.StatusNaoConfereException;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ContaDTO;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.ExibirContasDTO;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.PagamentoAtualizarDTO;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.TipoDeConta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,6 +78,22 @@ public class ContaService {
     public void deletarConta(int id){
         contaRepository.deleteById(id);
     }
+
+    public List<Conta> aplicarFiltros(StatusDaConta statusDaConta, TipoDeConta tipoDeConta, Double valor) {
+        if (statusDaConta != null) {
+            return contaRepository.findAllByStatusDaConta(statusDaConta);
+        }
+        else if (tipoDeConta != null) {
+            return contaRepository.findAllByTipoDeConta(tipoDeConta);
+        }
+        else if (valor != null) {
+            return contaRepository.findAllByValorAproximado(valor);
+        }
+
+        return exibirContasCadastradas();
+    }
+
+
 
 
 }

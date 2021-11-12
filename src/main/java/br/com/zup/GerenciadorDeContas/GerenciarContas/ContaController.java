@@ -2,6 +2,8 @@ package br.com.zup.GerenciadorDeContas.GerenciarContas;
 
 
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos.*;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
+import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.TipoDeConta;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,9 +31,11 @@ public class ContaController {
     }
 
     @GetMapping
-    public List<ExibirContasDTO> exibirContas() {
+    public List<ExibirContasDTO> exibirContas(@RequestParam(required = false)StatusDaConta statusDaConta,
+                                              @RequestParam(required = false)TipoDeConta tipoDeConta,
+                                              @RequestParam(required = false) Double valor) {
         List<ExibirContasDTO> contaDtos = new ArrayList<>();
-        for (Conta conta : contaService.exibirContasCadastradas()) {
+        for (Conta conta : contaService.aplicarFiltros(statusDaConta, tipoDeConta, valor)) {
             ExibirContasDTO exibirContaDto = modelMapper.map(conta, ExibirContasDTO.class);
 
             contaDtos.add(exibirContaDto);
@@ -57,5 +61,7 @@ public class ContaController {
     public void deletarConta(@PathVariable int id){
         contaService.deletarConta(id);
     }
+
+
 
 }
