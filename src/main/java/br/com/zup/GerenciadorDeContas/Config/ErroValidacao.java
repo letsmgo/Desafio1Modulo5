@@ -24,4 +24,5 @@ public class ErroValidacao {
     public void setCampo(String campo) {
         this.campo = campo;
     }
+
 }

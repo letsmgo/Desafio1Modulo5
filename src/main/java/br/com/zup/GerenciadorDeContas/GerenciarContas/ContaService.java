@@ -66,9 +66,9 @@ public class ContaService {
         return contaParaAtualizarPgto;
     }
 
-    private void verificarStatusPgto (PagamentoAtualizarDTO pagamentoAtualizarDTO){
+    private void verificarStatusPgto(PagamentoAtualizarDTO pagamentoAtualizarDTO) {
 
-        if (StatusDaConta.PAGO != pagamentoAtualizarDTO.getStatusDaConta()){
+        if (StatusDaConta.PAGO != pagamentoAtualizarDTO.getStatusDaConta()) {
             throw new StatusNaoConfereException("Status não compatível!");
         }
     }

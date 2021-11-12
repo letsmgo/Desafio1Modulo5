@@ -42,11 +42,11 @@ public class ContaController {
     @PutMapping("/{id}")
     public SaidaPgtoAtualizadoDTO atualizarPgto(@PathVariable int id, @RequestBody PagamentoAtualizarDTO
             contaAtualizada) {
-        return modelMapper.map(contaService.atualizarPgtoConta(id,contaAtualizada), SaidaPgtoAtualizadoDTO.class);
+        return modelMapper.map(contaService.atualizarPgtoConta(id, contaAtualizada), SaidaPgtoAtualizadoDTO.class);
     }
 
     @GetMapping("/{id}")
-    public ContaSaidaGeralDTO buscaPorIdEspecifico(@PathVariable int id){
+    public ContaSaidaGeralDTO buscaPorIdEspecifico(@PathVariable int id) {
         Conta conta = contaService.localizarPorId(id);
 
         return modelMapper.map(conta, ContaSaidaGeralDTO.class);
