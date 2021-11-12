@@ -2,6 +2,7 @@ package br.com.zup.GerenciadorDeContas.GerenciarContas.Dtos;
 
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.StatusDaConta;
 import br.com.zup.GerenciadorDeContas.GerenciarContas.Enums.TipoDeConta;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ public class ContaSaidaGeralDTO {
     private double valor;
     private TipoDeConta tipoDeConta;
     private LocalDate dataDeVencimento;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataDePagamento;
     private StatusDaConta statusDaConta;
 

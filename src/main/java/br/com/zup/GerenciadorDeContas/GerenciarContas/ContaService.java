@@ -43,9 +43,9 @@ public class ContaService {
     }
 
     public List<Conta> exibirContasCadastradas() {
-        Iterable<Conta> contas = contaRepository.findAll();
+        List<Conta> contas = (List<Conta>) contaRepository.findAll();
 
-        return (List<Conta>) contas;
+        return contas;
     }
 
     public Conta localizarPorId(int id) {
@@ -72,6 +72,11 @@ public class ContaService {
             throw new StatusNaoConfereException("Status não compatível!");
         }
     }
+
+    public void deletarConta(int id){
+        contaRepository.deleteById(id);
+    }
+
 
 }
 
