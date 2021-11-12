@@ -32,7 +32,7 @@ public class Conta {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataDePagamento;
 
-    private StatusDaConta statusDaConta = StatusDaConta.AGUARDANDO;
+    private StatusDaConta statusDaConta;
 
     public Conta() {
 
